@@ -80,7 +80,9 @@ class Arena {
     const finalDamage =
       initialDamage != 0 ? initialDamage - Math.floor(taker.armour / 3) : 0;
 
-    taker.hp -= finalDamage;
+    const isHit = Math.random()*100 <= attacker.weapon.hitChance;
+
+    taker.hp = isHit ? taker.hp - finalDamage : taker.hp;
     return initialDamage;
   }
 
